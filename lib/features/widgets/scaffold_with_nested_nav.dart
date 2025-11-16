@@ -22,6 +22,7 @@ class _ScaffoldWithNestedNavState extends State<ScaffoldWithNestedNav> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context).colorScheme;
     return Scaffold(
       body: widget.navigationShell,
       bottomNavigationBar: BottomNavigationBar(
@@ -29,6 +30,8 @@ class _ScaffoldWithNestedNavState extends State<ScaffoldWithNestedNav> {
         currentIndex: widget.navigationShell.currentIndex,
         type: BottomNavigationBarType.fixed,
         onTap: _goBranch,
+        selectedItemColor: theme.primary,
+        unselectedItemColor: theme.secondary,
         items: [
           BottomNavigationBarItem(label: "Home", icon: Icon(Icons.home_filled)),
           BottomNavigationBarItem(
