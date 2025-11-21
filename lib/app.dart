@@ -1,6 +1,6 @@
 import 'package:ecommerce_app/api/api.dart';
 import 'package:ecommerce_app/di/di.dart';
-import 'package:ecommerce_app/features/search/blocs/search_by_letters_bloc/search_by_letters_bloc.dart';
+import 'package:ecommerce_app/features/blocs/search_by_letters_bloc/search_by_letters_bloc.dart';
 import 'package:ecommerce_app/router/router.dart';
 import 'package:ecommerce_app/theme/theme.dart';
 import 'package:flutter/material.dart';

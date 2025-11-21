@@ -2,10 +2,12 @@ import 'dart:async';
 import 'dart:developer';
 import 'package:ecommerce_app/api/api.dart';
 import 'package:ecommerce_app/di/di.dart';
-import 'package:ecommerce_app/features/search/blocs/search_by_letters_bloc/search_by_letters_bloc.dart';
+import 'package:ecommerce_app/features/blocs/search_by_letters_bloc/search_by_letters_bloc.dart';
 import 'package:ecommerce_app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../widgets/widgets.dart';
 
 class SearchScreen extends StatefulWidget {
   const SearchScreen({super.key});
@@ -15,7 +17,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  final TextEditingController _searchController = TextEditingController();
   final String defaultImg =
       "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp";
   Timer? _debounce;
@@ -26,10 +27,11 @@ class _SearchScreenState extends State<SearchScreen> {
     super.dispose();
   }
 
+  //TODO: create a service for this method
   void _onSearchChanged(String query) {
     if (_debounce?.isActive ?? false) _debounce!.cancel();
     _debounce = Timer(const Duration(milliseconds: 500), () {
-      log("Working");
+      log("Time is out!!!");
       if (query.isNotEmpty) {
         context.read<SearchByLettersBloc>().add(
           OnSearchByLettersEvent(query: query),
@@ -56,19 +58,8 @@ class _SearchScreenState extends State<SearchScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 50),
-            TextField(
-              controller: _searchController,
-              onChanged: (value) {
-                _onSearchChanged(value);
-              },
-              decoration: InputDecoration(
-                prefixIcon: Icon(Icons.search),
-                hintText: "I am seeking for...",
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-            ),
+
+            SearchField(onChanged: _onSearchChanged),
             Expanded(
               child: BlocBuilder<SearchByLettersBloc, SearchByLettersState>(
                 builder: (context, state) {

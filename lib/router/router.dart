@@ -1,4 +1,5 @@
 import 'package:ecommerce_app/features/likes/likes.dart';
+import 'package:ecommerce_app/features/login/view/view.dart';
 import 'package:ecommerce_app/features/more/view/more_screen.dart';
 import 'package:ecommerce_app/features/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,10 @@ final _shellNavigatorMoreKey = GlobalKey<NavigatorState>(
 );
 
 class AppRoutes {
+  //login
+  static const String signInScreen = "/signIn";
+  static const String signUpScreen = "/signUp";
+  //bottom nav bar
   static const String mainScreen = "/main";
   static const String searchScreen = "/search";
   static const String cartScreen = "/cart";
@@ -37,6 +42,15 @@ final myRouter = GoRouter(
   navigatorKey: _rootNavigatorKey,
   initialLocation: AppRoutes.mainScreen,
   routes: [
+    GoRoute(
+      path: AppRoutes.signInScreen,
+      builder: (context, state) => SignInScreen(),
+    ),
+    GoRoute(
+      path: AppRoutes.signUpScreen,
+      builder: (context, state) => SignUpScreen(),
+    ),
+
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
           ScaffoldWithNestedNav(navigationShell: navigationShell),
