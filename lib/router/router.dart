@@ -1,6 +1,7 @@
 import 'package:ecommerce_app/features/likes/likes.dart';
 import 'package:ecommerce_app/features/login/view/view.dart';
 import 'package:ecommerce_app/features/more/view/more_screen.dart';
+import 'package:ecommerce_app/features/more_details/view/view.dart';
 import 'package:ecommerce_app/features/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -36,6 +37,7 @@ class AppRoutes {
   static const String cartScreen = "/cart";
   static const String likesScreen = "/likes";
   static const String moreScreen = "/more";
+  static const String moreDetailsScreen = "/more_details";
 }
 
 final myRouter = GoRouter(
@@ -50,7 +52,12 @@ final myRouter = GoRouter(
       path: AppRoutes.signUpScreen,
       builder: (context, state) => SignUpScreen(),
     ),
+    GoRoute(
+      path: AppRoutes.moreDetailsScreen,
+      builder: (context, state) => MoreDetailsScreen(),
+    ),
 
+    //Bottom Nav Bar
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) =>
           ScaffoldWithNestedNav(navigationShell: navigationShell),

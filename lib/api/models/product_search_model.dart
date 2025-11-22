@@ -1,4 +1,4 @@
-import 'package:ecommerce_app/api/model/product_model.dart';
+import 'package:ecommerce_app/api/models/product_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part "product_search_model.g.dart";

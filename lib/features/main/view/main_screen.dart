@@ -1,11 +1,7 @@
-import 'dart:async';
-import 'dart:developer';
-
 import 'package:ecommerce_app/features/main/widgets/widgets.dart';
-import 'package:ecommerce_app/features/blocs/search_by_letters_bloc/search_by_letters_bloc.dart';
 import 'package:ecommerce_app/features/widgets/search_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -15,27 +11,6 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  Timer? _debounce;
-
-  @override
-  void dispose() {
-    _debounce?.cancel();
-    super.dispose();
-  }
-
-  //TODO: make for this func its own service
-  void _onSearchChanged(String query) {
-    if (_debounce?.isActive ?? false) _debounce!.cancel();
-    _debounce = Timer(const Duration(milliseconds: 500), () {
-      log("Time is out!!!");
-      if (query.isNotEmpty) {
-        context.read<SearchByLettersBloc>().add(
-          OnSearchByLettersEvent(query: query),
-        );
-      }
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,10 +21,14 @@ class _MainScreenState extends State<MainScreen> {
           SliverPadding(
             padding: EdgeInsetsGeometry.symmetric(horizontal: 20, vertical: 10),
             sliver: SliverToBoxAdapter(
-              child: SearchField(onChanged: _onSearchChanged),
+              child: SearchField(onTap: () => context.go("/search")),
             ),
           ),
           AdditionalPanel(),
+          TextBaner(text: "Рекомендації на основі ваших переглядів"),
+          RecomendCarusel(),
+          TextBaner(text: "Найкраці пропозиції"),
+          PopularPoroductsGrid(),
         ],
       ),
     );

@@ -6,24 +6,24 @@ class AdditionalPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverPadding(
-      padding: EdgeInsetsGeometry.symmetric(horizontal: 40, vertical: 10),
+      padding: EdgeInsetsGeometry.symmetric(horizontal: 25, vertical: 10),
       sliver: SliverToBoxAdapter(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            AdditionalBox(
+            _AdditionalBox(
               title: "Каталок",
               icon: Icon(Icons.category_outlined, size: 30),
             ),
-            AdditionalBox(
+            _AdditionalBox(
               title: "Каталок",
               icon: Icon(Icons.category_outlined, size: 30),
             ),
-            AdditionalBox(
+            _AdditionalBox(
               title: "Каталок",
               icon: Icon(Icons.category_outlined, size: 30),
             ),
-            AdditionalBox(
+            _AdditionalBox(
               title: "Каталок",
               icon: Icon(Icons.category_outlined, size: 30),
             ),
@@ -34,8 +34,8 @@ class AdditionalPanel extends StatelessWidget {
   }
 }
 
-class AdditionalBox extends StatelessWidget {
-  const AdditionalBox({super.key, required this.title, required this.icon});
+class _AdditionalBox extends StatelessWidget {
+  const _AdditionalBox({required this.title, required this.icon});
 
   final String title;
   final Widget icon;

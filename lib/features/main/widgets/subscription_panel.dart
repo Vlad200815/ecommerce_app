@@ -18,6 +18,7 @@ class SubscriptionPanel extends StatelessWidget {
               subTitle: "Підписка Smart",
               title: "Безкоштовна доставка",
             ),
+            const SizedBox(width: 10),
             SubscriptionBox(
               backgroundColor: const Color.fromARGB(126, 76, 175, 79),
               imgColor: theme.colorScheme.primary,
@@ -47,39 +48,41 @@ class SubscriptionBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: backgroundColor,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: imgColor,
+    return Expanded(
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          color: backgroundColor,
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            children: [
+              Container(
+                width: 40,
+                height: 40,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: imgColor,
+                ),
               ),
-            ),
-            const SizedBox(width: 10),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 9),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  subTitle,
-                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 8),
-                ),
-              ],
-            ),
-          ],
+              const SizedBox(width: 10),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(fontWeight: FontWeight.w900, fontSize: 9),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    subTitle,
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 8),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

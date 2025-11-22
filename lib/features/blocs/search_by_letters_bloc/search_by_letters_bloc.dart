@@ -1,8 +1,8 @@
 import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/api/api.dart';
-import 'package:ecommerce_app/api/model/product_model.dart';
-import 'package:ecommerce_app/api/model/product_search_model.dart';
+import 'package:ecommerce_app/api/models/product_model.dart';
+import 'package:ecommerce_app/api/models/product_search_model.dart';
 import 'package:equatable/equatable.dart';
 
 part 'search_by_letters_event.dart';
